@@ -1,0 +1,16 @@
+/*********************************************
+ *                  GENERAL
+ *********************************************/
+.reveal .red {
+  color: #F44336;
+  font-weight: bold;
+}
+
+.reveal .green {
+  color: #8BC34A;
+  font-weight: bold;
+}
+
+// Some functional classes
+.reveal .tc { text-align: center; }
+.reveal .list { list-style-type:none; }
