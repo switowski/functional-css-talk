@@ -12,6 +12,8 @@
         <link rel="stylesheet" href="css/reveal.css">
         <!-- Reveal.js theme -->
         <link rel="stylesheet" href="css/theme/night.css">
+        <!-- Add font awesome for icons -->
+        <link rel="stylesheet" href="css/font-awesome.min.css">
         <!-- Custom CSS rules -->
         <link rel="stylesheet" href="css/custom.css">
 
@@ -42,19 +44,73 @@
                 <section>
                     <h3>Problems of CSS</h3>
                     <ul>
-                        <li>
+                        <li class="fragment">
                             <span class="red">Cascading</span> <span class="green">Style Sheets</span>
                         </li>
-                        <li>Hard to maintain</li>
-                        <li>Unused and duplicated code</li>
-                        <li>You can't refactor CSS</li>
+                        <li class="fragment">Hard to maintain</li>
+                        <li class="fragment">Unused and duplicated code</li>
                     </ul>
+                </section>
+                <section>
+                    <h3>CSS is hard to refactor</h3>
+                    <br>
+                    <img src="./img/refactoring-css.gif" alt="Refactoring CSS doesn't always work well">
                 </section>
                 <section>
                     <h2>How can we solve this problem?</h2>
                 </section>
                 <section>
-                    <h2>Visual regression tests</h2>
+                    <section>
+                        <h2>We can write tests for CSS<h2>
+                        <img class="fragment" src="./img/css-tests.jpg" alt="Tests for CSS?">
+                    </section>
+                    <section>
+                        <h2>Visual regression tests</h2>
+                    </section>
+                    <section>
+                        <h3>Visual regression tests</h3>
+                        <br>
+                        <img src="./img/visual-regression.png">
+                    </section>
+                    <section>
+                        <h3>
+                            <a href="https://github.com/Huddle/PhantomCSS">PhantomCSS <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
+                            </a>
+                        <br>
+                        <img src="./img/phantom-css.png">
+                    </section>
+                    <section>
+                        <h3>
+                            <a href="https://github.com/wearefriday/spectre">spectre <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
+                            </a>
+                        <br>
+                        <img src="./img/spectre.png">
+                    </section>
+                    <section>
+                        <h3>
+                            <a href="https://percy.io/">percy.io <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
+                            </a>
+                        <br>
+                        <img src="./img/percy.png">
+                    </section>
+                    <section>
+                    <h3>Other tools</h3>
+                        <ul>
+                            <li>
+                                <a href="https://needle.readthedocs.io">Needle (for Python) <i class="fa fa-external-link fs-08" aria-hidden="true"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/bslatkin/dpxdt">dpxdt (for Python) <i class="fa fa-external-link fs-08" aria-hidden="true"></i></a>
+                            </li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <h3>Challenges of visual regression testing</h3>
+                    <ul>
+                        <li>Dynamic content</li>
+                        <li>Sharing tests with your team</li>
+                    </ul>
                 </section>
             </div>
         </div>

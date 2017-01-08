@@ -1,16 +1,29 @@
 /*********************************************
  *                  GENERAL
  *********************************************/
+/* Use CSS variables */
+:root {
+  --md-green: #8bc34a;
+  --md-red: #f44336;
+}
+
+/* Enable Font-Awesome for icons */
+.reveal i.fa {
+  font-family: 'FontAwesome';
+  font-style: normal;
+}
+
 .reveal .red {
-  color: #F44336;
+  color: var(--md-red);
   font-weight: bold;
 }
 
 .reveal .green {
-  color: #8BC34A;
+  color: var(--md-green);
   font-weight: bold;
 }
 
-// Some functional classes
+/* Some functional classes */
 .reveal .tc { text-align: center; }
 .reveal .list { list-style-type:none; }
+.reveal .fs-08 { font-size: 0.8em; }
