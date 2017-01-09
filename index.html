@@ -124,7 +124,180 @@
                     <h2>Functional CSS</h2>
                 </section>
                 <section>
-                    <img src="./img/functional-cat.png">
+                    <section>
+                        <img src="./img/functional-cat.png">
+                        <br>
+                        <pre class="fragment"><code class="html" data-trim>
+<article class="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center">
+  <img src="http://example.com" class="db w-100 br2 br--top">
+  <div class="pa2 ph3-ns pb3-ns">
+    <div class="dt w-100 mt1">
+      <div class="dtc">
+        <h1 class="f5 f4-ns mv0">Cat</h1>
+      </div>
+      <div class="dtc tr">
+        <h2 class="f5 mv0">$1,000</h2>
+      </div>
+    </div>
+    <p class="f6 lh-copy measure mt2 mid-gray">...</p>
+  </div>
+</article>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre style="height:620px"><code class="css" style='min-height:100%;' data-trim data-noescape>
+.ba { border-style: solid; border-width: 1px; }
+.b--black-10 { border-color: rgba(0, 0, 0, .1); }
+.br2 { border-radius: .25rem; }
+.br--top { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.db { display: block; }
+.dt { display: table; }
+.dtc { display: table-cell; }
+.lh-copy { line-height: 1.6; }
+.mw5 { max-width: 16rem; }
+.w-100 { width: 100%; }
+.dark-gray { color: #333; }
+.mid-gray { color: #555; }
+.pa2 { padding: .5rem; }
+.mt1 { margin-top: .25rem; }
+.mt2 { margin-top: .5rem; }
+.mv0 { margin-top: 0; margin-bottom: 0; }
+.mv4 { margin-top: 2rem; margin-bottom: 2rem; }
+.tr { text-align: right; }
+.f5 { font-size: 1rem; }
+.f6 { font-size: .875rem; }
+.measure { max-width: 30em; }
+.center { margin-right: auto; margin-left: auto; }
+
+@media screen and (min-width: 30em) {
+  .pb3-ns { padding-bottom: 1rem; }
+  .ph3-ns { padding-left: 1rem; padding-right: 1rem; }
+  .f4-ns { font-size: 1.25rem; } }
+@media screen and (min-width: 30em) and (max-width: 60em) {
+  .w-50-m { width: 50%; } }
+@media screen and (min-width: 60em) {
+  .w-25-l { width: 25%; } }
+                        </code></pre>
+                    </section>
+                    <section>
+                        <img src="./img/functional-cat.png">
+                        <br>
+                        <pre><code class="html" data-trim>
+<p class="f6">...</p>
+                        </code></pre>
+                        <p class="f1">&#8595;</p>
+                        <pre><code class="html" data-trim>
+<p class="f5">...</p>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h3>Functional CSS is:</h3>
+                    <ul>
+                        <li class="fragment">Pure (no side effects)</li>
+                        <li class="fragment">Composable</li>
+                        <li class="fragment">Immutable</li>
+                        <li class="fragment">Transparent</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Frameworks</h2>
+                    <br>
+                    <ul class="list f2">
+                        <li><a href="http://tachyons.io/">Tachyons <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
+                            </a></li>
+                        <li><a href="http://basscss.com/">Basscss <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
+                            </a></li>
+                    </ul>
+                </section>
+                <section>
+                    <section>
+                        <h3>Cons of functional CSS</h3>
+                        <br>
+                        <ul>
+                            <li>"It's just replacing duplicated CSS rules with duplicated CSS classes!"</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <pre style="height:600px"><code class="css" style='min-height:100%;' data-trim data-noescape>
+.table-list-triage {
+    display: none;
+}
+.triage-mode .table-list-non-triage, .triage-mode .table-list-filters {
+    display: none;
+}
+.boxed-group-list>li.approved .btn-sm, .boxed-group-list>li.rejected .btn-sm {
+    display: none;
+}
+.repo-list .participation-graph.disabled {
+    display: none;
+}
+.payment-methods .selected-payment-method {
+    display: none;
+}
+.payment-methods.paypal-logged-in .paypal-sign-in {
+    display: none;
+}
+.payment-methods.has-paypal-account .paypal-sign-in {
+    display: none;
+}
+.currency-container .local-currency, .currency-container .local-currency-block {
+    display: none;
+}
+.currency-container.open .default-currency {
+    display: none;
+}
+.plan-chooser-repo-menu .price-label {
+    display: none;
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code class="html" data-trim>
+<p class="dn ...">...</p>
+<div class="dn ...">...</div>
+<li class="dn ...">...</li>
+<div class="dn ...">...</div>
+<span class="dn ...">...</span>
+<article class="dn ...">...</article>
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Cons of functional CSS</h3>
+                        <br>
+                        <ul>
+                            <li>"It's just replacing duplicated CSS rules with duplicated CSS classes!"</li>
+                            <li>Updating existing components can be a pain</li>
+                            <li>Won't work with non-functional frameworks</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Pros of functional CSS</h3>
+                        <br>
+                        <ul>
+                            <li>Modifying existing styling is easier</li>
+                            <li>No more wrestling with the specificity</li>
+                            <li>Very easy to add themes</li>
+                            <li>Coding is faster</li>
+                            <li>Encourages HTML components (<a href="http://tachyons.io/components/">Tachyons components <i class="fa fa-external-link fs-08" aria-hidden="true"></i></a>)</li>
+                            <li>Cache-friendly</li>
+                            <li>Faster websites</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>No more writing CSS?</h2>
+                    </section>
+                    <section>
+                        <pre><code class="css" data-trim data-noescape>
+.pixel-perfect-button {
+    font-size: 18px;
+    margin: 47px;
+    padding-top: 153px;
+}
+                        </code></pre>
+                    </section>
                 </section>
             </div>
         </div>
@@ -136,6 +309,10 @@
             // More info https://github.com/hakimel/reveal.js#configuration
             Reveal.initialize({
                 history: true,
+                // Display the page number of the current slide
+                slideNumber: true,
+                // Transition style
+                transition: 'zoom', // none/fade/slide/convex/concave/zoom
 
                 // More info https://github.com/hakimel/reveal.js#dependencies
                 dependencies: [

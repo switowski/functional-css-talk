@@ -24,6 +24,13 @@
 }
 
 /* Some functional classes */
+.reveal .b { font-weight:bold; }
 .reveal .tc { text-align: center; }
 .reveal .list { list-style-type:none; }
 .reveal .fs-08 { font-size: 0.8em; }
+.reveal .f1 { font-size: 3rem; }
+.reveal .f2 { font-size: 2.25rem; }
+.reveal .f3 { font-size: 1.5rem; }
+.reveal .f4 { font-size: 1.25rem; }
+.reveal .f5 { font-size: 1rem; }
+.reveal .f6 { font-size: .875rem; }
