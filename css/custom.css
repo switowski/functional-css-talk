@@ -15,12 +15,21 @@
 
 .reveal .red {
   color: var(--md-red);
-  font-weight: bold;
 }
 
 .reveal .green {
   color: var(--md-green);
-  font-weight: bold;
+}
+
+/* By default, disable bullets in the lists*/
+.reveal ul {
+  list-style: none;
+  margin: 0;
+}
+
+.reveal ul.bullets {
+  list-style: disc;
+  margin: 0 0 0 1em;
 }
 
 /* Some functional classes */
@@ -34,3 +43,8 @@
 .reveal .f4 { font-size: 1.25rem; }
 .reveal .f5 { font-size: 1rem; }
 .reveal .f6 { font-size: .875rem; }
+.reveal .pb0 { padding-bottom: 5px; }
+.reveal .pb1 { padding-bottom: 10px; }
+.reveal .pb2 { padding-bottom: 15px; }
+.reveal .pb3 { padding-bottom: 20px; }
+.reveal .pb4 { padding-bottom: 25px; }

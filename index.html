@@ -42,13 +42,15 @@
                     </p>
                 </section>
                 <section>
-                    <h3>Problems of CSS</h3>
-                    <ul>
-                        <li class="fragment">
-                            <span class="red">Cascading</span> <span class="green">Style Sheets</span>
+                    <h2>Problems of CSS</h2>
+                    <br>
+                    <br>
+                    <ul class="f2">
+                        <li class="pb1 tc fragment">
+                            <span class="red b">Cascading</span> <span class="green">Style Sheets</span>
                         </li>
-                        <li class="fragment">Hard to maintain</li>
-                        <li class="fragment">Unused and duplicated code</li>
+                        <li class="pb1 tc fragment">Hard to maintain</li>
+                        <li class="pb1 tc fragment">Unused and duplicated code</li>
                     </ul>
                 </section>
                 <section>
@@ -68,7 +70,7 @@
                         <h2>Visual regression tests</h2>
                     </section>
                     <section>
-                        <h3>Visual regression tests</h3>
+                        <h2>Visual regression tests</h2>
                         <br>
                         <img src="./img/visual-regression.png">
                     </section>
@@ -76,27 +78,29 @@
                         <h3>
                             <a href="https://github.com/Huddle/PhantomCSS">PhantomCSS <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
                             </a>
-                        <br>
+                        </h3>
                         <img src="./img/phantom-css.png">
                     </section>
                     <section>
                         <h3>
                             <a href="https://github.com/wearefriday/spectre">spectre <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
                             </a>
-                        <br>
+                        </h3>
                         <img src="./img/spectre.png">
                     </section>
                     <section>
                         <h3>
                             <a href="https://percy.io/">percy.io <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
                             </a>
-                        <br>
+                        </h3>
                         <img src="./img/percy.png">
                     </section>
                     <section>
-                    <h3>Other tools</h3>
-                        <ul>
-                            <li>
+                    <h2>Other tools</h2>
+                    <br>
+                    <br>
+                        <ul class="f2">
+                            <li class="pb1">
                                 <a href="https://needle.readthedocs.io">Needle (for Python) <i class="fa fa-external-link fs-08" aria-hidden="true"></i></a>
                             </li>
                             <li>
@@ -106,18 +110,22 @@
                     </section>
                 </section>
                 <section>
-                    <h3>Challenges of visual regression testing</h3>
-                    <ul>
-                        <li>Dynamic content</li>
+                    <h3>Challenges of visual regression testing:</h3>
+                    <br>
+                    <br>
+                    <ul class='tc f2'>
+                        <li class="pb2">Dynamic content</li>
                         <li>Sharing tests with your team</li>
                     </ul>
                 </section>
                 <section>
-                    <h3>Writing maintainable CSS</h3>
-                    <ul>
-                        <li>OOCSS (separate style from structure and container from content)</li>
-                        <li>BEM (how to name classes)</li>
-                        <li>SMACSS (structuring your CSS)</li>
+                    <h2>Writing maintainable CSS</h2>
+                    <br>
+                    <br>
+                    <ul class="f2 tc">
+                        <li class="pb2"><span class="b green">OOCSS</span> (separate style from structure<br> and content from container)</li>
+                        <li class="pb2"><span class="b green">BEM</span> (how to name classes)</li>
+                        <li><span class="b green">SMACSS</span> (structuring your CSS)</li>
                     </ul>
                 </section>
                 <section>
@@ -192,19 +200,22 @@
                     </section>
                 </section>
                 <section>
-                    <h3>Functional CSS is:</h3>
-                    <ul>
-                        <li class="fragment">Pure (no side effects)</li>
-                        <li class="fragment">Composable</li>
-                        <li class="fragment">Immutable</li>
+                    <h2>Functional CSS is:</h2>
+                    <br>
+                    <br>
+                    <ul class="tc f2">
+                        <li class="pb2 fragment">Pure (no side effects)</li>
+                        <li class="pb2 fragment">Composable</li>
+                        <li class="pb2 fragment">Immutable</li>
                         <li class="fragment">Transparent</li>
                     </ul>
                 </section>
                 <section>
                     <h2>Frameworks</h2>
                     <br>
-                    <ul class="list f2">
-                        <li><a href="http://tachyons.io/">Tachyons <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
+                    <br>
+                    <ul class="tc f2">
+                        <li class="pb2"><a href="http://tachyons.io/">Tachyons <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
                             </a></li>
                         <li><a href="http://basscss.com/">Basscss <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
                             </a></li>
@@ -212,9 +223,24 @@
                 </section>
                 <section>
                     <section>
-                        <h3>Cons of functional CSS</h3>
+                        <h2>The good parts</h2>
                         <br>
-                        <ul>
+                        <ul class="tc f2">
+                            <li class="pb2 fragment">Modifying existing styling is easier</li>
+                            <li class="pb2 fragment">No more wrestling with the specificity</li>
+                            <li class="pb2 fragment">Very easy to add themes</li>
+                            <li class="pb2 fragment">Coding is faster</li>
+                            <li class="pb2 fragment">Encourages HTML components<br>(<a href="http://tachyons.io/components/">Tachyons components <i class="fa fa-external-link fs-08" aria-hidden="true"></i></a>)</li>
+                            <li class="pb2 fragment">Encourages design consistency</li>
+                            <li class="pb2 fragment">Cache-friendly</li>
+                            <li class="pb2 fragment">Faster websites</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>The bad parts</h2>
+                        <br>
+                        <br>
+                        <ul class="tc f2">
                             <li>"It's just replacing duplicated CSS rules with duplicated CSS classes!"</li>
                         </ul>
                     </section>
@@ -263,34 +289,22 @@
                         </code></pre>
                     </section>
                     <section>
-                        <h3>Cons of functional CSS</h3>
+                        <h3>The bad parts</h3>
                         <br>
-                        <ul>
-                            <li>"It's just replacing duplicated CSS rules with duplicated CSS classes!"</li>
-                            <li>Updating existing components can be a pain</li>
+                        <br>
+                        <ul class="tc f2">
+                            <li class="pb3">"It's just replacing duplicated CSS rules with duplicated CSS classes!"</li>
+                            <li class="pb3">Updating existing components can be a pain</li>
                             <li>Won't work with non-functional frameworks</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Pros of functional CSS</h3>
-                        <br>
-                        <ul>
-                            <li>Modifying existing styling is easier</li>
-                            <li>No more wrestling with the specificity</li>
-                            <li>Very easy to add themes</li>
-                            <li>Coding is faster</li>
-                            <li>Encourages HTML components (<a href="http://tachyons.io/components/">Tachyons components <i class="fa fa-external-link fs-08" aria-hidden="true"></i></a>)</li>
-                            <li>Cache-friendly</li>
-                            <li>Faster websites</li>
                         </ul>
                     </section>
                 </section>
                 <section>
                     <section>
-                        <h2>No more writing CSS?</h2>
-                    </section>
-                    <section>
-                        <pre><code class="css" data-trim data-noescape>
+                        <h3>No more writing CSS?</h3>
+                        <br>
+                        <br>
+                        <pre class="fragment"><code class="css" data-trim data-noescape>
 .pixel-perfect-button {
     font-size: 18px;
     margin: 47px;
@@ -298,6 +312,58 @@
 }
                         </code></pre>
                     </section>
+                    <section>
+                        <h3>It's ok to write CSS</h3>
+                        <br>
+                        <br>
+                        <pre><code class="css" data-trim data-noescape>
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    *width: 600px;
+    *margin-left: -300px;
+    *top: 50px;
+}
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>Functional CSS won't solve all CSS problems</h2>
+                    </section>
+                    <section>
+                        <h2>CSS bloat vs HTML bloat</h2>
+                        <br>
+                        <br>
+                        <pre><code class="html" data-trim>
+<div class="sidebar">...</div>
+                        </code></pre>
+                        <p class="fs2 b">+</p>
+                        <pre><code class="css" data-trim data-noescape>
+sidebar {
+    float: left;
+    margin-right: 10px;
+    width: 25%;
+}
+                        </code></pre>
+
+                        <p class="fs2 b">vs.</p>
+                        <pre><code class="html" data-trim>
+<div class="float-left margin-right-1 width-25">...</div>
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <h1>Thank you</h1>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h3>Questions?</h3>
                 </section>
             </div>
         </div>
@@ -310,9 +376,9 @@
             Reveal.initialize({
                 history: true,
                 // Display the page number of the current slide
-                slideNumber: true,
+                slideNumber: 'c/t',
                 // Transition style
-                transition: 'zoom', // none/fade/slide/convex/concave/zoom
+                transition: 'fade', // none/fade/slide/convex/concave/zoom
 
                 // More info https://github.com/hakimel/reveal.js#dependencies
                 dependencies: [
