@@ -16,7 +16,8 @@ First, I will say why writing CSS is hard, then I will describe how functional C
 
 Different title options:
 ========================
-Writing maintainable CSS with Functional CSS
+Writing maintainable CSS with Functional CSS.
+Maintainable CSS with visual regression testing and functional CSS.
 
 
 Presentation:

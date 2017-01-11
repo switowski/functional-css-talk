@@ -33,30 +33,52 @@
         <div class="reveal">
             <div class="slides">
                 <section>
-                    <h1>Functional CSS</h1>
+                    <h1>Maintainable CSS</h1>
+                    <br>
+                    <h2>with visual regression testing and functional CSS</h2>
                     <br>
                     <br>
                     <br>
                     <p>
                         <a href="https://github.com/switowski">Sebastian Witowski</a>
                     </p>
+                <aside class="notes">
+                    No ultimate way to write CSS<br>
+                </aside>
                 </section>
                 <section>
                     <h2>Problems of CSS</h2>
                     <br>
                     <br>
                     <ul class="f2">
-                        <li class="pb1 tc fragment">
+                        <li class="pb2 tc fragment">
                             <span class="red b">Cascading</span> <span class="green">Style Sheets</span>
                         </li>
-                        <li class="pb1 tc fragment">Hard to maintain</li>
-                        <li class="pb1 tc fragment">Unused and duplicated code</li>
+                        <li class="pb2 tc fragment">Hard to maintain<br>(wrestling specificity with IDs and !important)</li>
+                        <li class="tc fragment">Unused and duplicated code</li>
                     </ul>
+                <aside class="notes">
+                    Cascading is nice<br>
+                    Cascading will get in your way<br>
+                    Modify one element and break 5 pages<br>
+                    Specificity gets in your way (especially frameworks)<br>
+                    Big files = faster duplicated code appears<br>
+                    Duplication - .menu and .navigation example<br>
+                    Duplication - using classes and tags for styling<br>
+                    No code review for CSS, rely on automatic tools<br>
+                    Unused - menu removed but it was chained with other selectors (fighting specificity of framework)<br>
+                    It's fine to leave CSS, no one will notice<br>
+                </aside>
                 </section>
                 <section>
                     <h3>CSS is hard to refactor</h3>
                     <br>
                     <img src="./img/refactoring-css.gif" alt="Refactoring CSS doesn't always work well">
+                <aside class="notes">
+                    Refactoring legacy Python project is easy, you have tests<br>
+                    Refactoring CSS means rewriting<br>
+                    No manager will let you do this (unless redesigning the website)<br>
+                </aside>
                 </section>
                 <section>
                     <h2>How can we solve this problem?</h2>
@@ -65,14 +87,20 @@
                     <section>
                         <h2>We can write tests for CSS<h2>
                         <img class="fragment" src="./img/css-tests.jpg" alt="Tests for CSS?">
-                    </section>
-                    <section>
-                        <h2>Visual regression tests</h2>
+                        <aside class="notes">
+                            Tests help refactoring<br>
+                            You test website manually<br>
+                            Game - find 5 differences<br>
+                            Let's write tests that will do the same thing automatically<br>
+                        </aside>
                     </section>
                     <section>
                         <h2>Visual regression tests</h2>
                         <br>
-                        <img src="./img/visual-regression.png">
+                        <img class='fragment' src="./img/visual-regression.png">
+                        <aside class="notes">
+                            How they work<br>
+                        </aside>
                     </section>
                     <section>
                         <h3>
@@ -80,6 +108,10 @@
                             </a>
                         </h3>
                         <img src="./img/phantom-css.png">
+                        <aside class="notes">
+                            Works locally<br>
+                            Requires writing steps for taking screenshots<br>
+                        </aside>
                     </section>
                     <section>
                         <h3>
@@ -87,6 +119,10 @@
                             </a>
                         </h3>
                         <img src="./img/spectre.png">
+                        <aside class="notes">
+                            Writing many tests is annoying<br>
+                            Spectre gives web interface and integrates with cucumber and rake<br>
+                        </aside>
                     </section>
                     <section>
                         <h3>
@@ -94,6 +130,11 @@
                             </a>
                         </h3>
                         <img src="./img/percy.png">
+                        <aside class="notes">
+                            Integration with CI tools (Travis, Jenkins)<br>
+                            Support Python, Ruby, RoR, Ember and static websites.<br>
+                            Features like freezing animations<br>
+                        </aside>
                     </section>
                     <section>
                     <h2>Other tools</h2>
@@ -117,19 +158,111 @@
                         <li class="pb2">Dynamic content</li>
                         <li>Sharing tests with your team</li>
                     </ul>
+                    <aside class="notes">
+                        You have to keep them up to date like normal tests<br>
+                        You have a number or random content? Fail<br>
+                        You can select what to compare<br>
+                        If not a part of CI, you have to share screenshots with team<br>
+                        Different OS and graphic card? Fail<br>
+                        Different configuration (Chromium instead of Chrome)? Fail<br>
+                        CI solves those issues<br>
+                        That's how we protect ourselves<br>
+                    </aside>
                 </section>
                 <section>
-                    <h2>Writing maintainable CSS</h2>
-                    <br>
-                    <br>
-                    <ul class="f2 tc">
-                        <li class="pb2"><span class="b green">OOCSS</span> (separate style from structure<br> and content from container)</li>
-                        <li class="pb2"><span class="b green">BEM</span> (how to name classes)</li>
-                        <li><span class="b green">SMACSS</span> (structuring your CSS)</li>
-                    </ul>
+                    <section>
+                        <h2>Writing maintainable CSS</h2>
+                        <br>
+                        <br>
+                        <ul class="f2 tc">
+                            <li class="pb2 b">OOCSS</li>
+                            <li class="pb2 b">BEM</li>
+                            <li class="pb2 b">SMACSS</li>
+                        </ul>
+                        <aside class="notes">
+                            Many methodologies<br>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Object Oriented CSS</h2>
+                        <br>
+                        <h3>1. Separate style from structure</h3>
+                        <pre><code class="css" data-trim data-noescape>
+.button {
+    width: ...;
+    height: ...;
+    overflow: ...;
+}
+
+...
+
+.alert {
+    border: ...;
+    background: ...;
+    color: ...;
+}
+                        </code></pre>
+                        <aside class="notes">
+                            Separate .button/.modal from .alert/.warning <br>
+                            Bootstrap does that and it works well<br>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Object Oriented CSS</h2>
+                        <br>
+                        <h3>2. Separate content from container</h3>
+                        <pre><code class="css" data-trim data-noescape>
+// BAD
+.sidebar h3 {
+    font-family: ...;
+    font-size: ...;
+}
+
+// GOOD
+.fancy-header {
+    font-family: ...;
+    font-size: ...;
+}
+                        </code></pre>
+                        <aside class="notes">
+                            Element should look the same no matter where it is<br>
+                            Avoid styling tags, style classes<br>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Block, Element, Modifier</h2>
+                        <br>
+                        <img src="./img/bem.jpg">
+                        <aside class="notes">
+                            Think of HTML and CSS in 3 categories: block, element, modifier<br>
+                            Menu block<br>
+                            Menu item - elements<br>
+                            Active item - modifier<br>
+                            Greatly improves encapsulation and reusability<br>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Scalable and Modular Architecture for CSS (SMACSS)</h2>
+                        <br>
+                        <ul class="tc f2">
+                            <li>Base</li>
+                            <li>Layout</li>
+                            <li>Module</li>
+                            <li>State</li>
+                            <li>Theme</li>
+                        </ul>
+                        <aside class="notes">
+                            More fine-grained categorization of elements<br>
+                        </aside>
+                    </section>
                 </section>
                 <section>
                     <h2>Functional CSS</h2>
+                    <aside class="notes">
+                        People come up with methodologies - so we have a problem with CSS<br>
+                        Recent idea to writing CSS<br>
+                        Functional programming trendy - why not functional CSS?<br>
+                    </aside>
                 </section>
                 <section>
                     <section>
@@ -151,6 +284,10 @@
   </div>
 </article>
                         </code></pre>
+                        <aside class="notes">
+                            Standard media object<br>
+                            Lot of HTML code if using functional framework<br>
+                        </aside>
                     </section>
                     <section>
                         <pre style="height:620px"><code class="css" style='min-height:100%;' data-trim data-noescape>
@@ -186,6 +323,12 @@
 @media screen and (min-width: 60em) {
   .w-25-l { width: 25%; } }
                         </code></pre>
+                        <aside class="notes">
+                            Even more CSS code<br>
+                            Didn't write a single CSS line myself<br>
+                            One rule per CSS class (with small exceptions)<br>
+                            I don't write CSS anymore<br>
+                        </aside>
                     </section>
                     <section>
                         <img src="./img/functional-cat.png">
@@ -197,6 +340,11 @@
                         <pre><code class="html" data-trim>
 <p class="f5">...</p>
                         </code></pre>
+                        <aside class="notes">
+                            Change 1 class to change the font size<br>
+                            No need to open the CSS file<br>
+                            No risk that we break some other elements<br>
+                        </aside>
                     </section>
                 </section>
                 <section>
@@ -209,6 +357,14 @@
                         <li class="pb2 fragment">Immutable</li>
                         <li class="fragment">Transparent (rem vs em)</li>
                     </ul>
+                    <aside class="notes">
+                        Pure - class for background color sets the background color only<br>
+                        Pure - in standard CSS one class changes 10 properties and 5 in children due to cascading<br>
+                        Composable - small, reusable blocks<br>
+                        Immutable - property once declared, won't change (no specificity fight)<br>
+                        Transparent - you know what a class does, no matter where on page<br>
+                        <br>
+                    </aside>
                 </section>
                 <section>
                     <h2>Frameworks</h2>
@@ -220,6 +376,11 @@
                         <li><a href="http://basscss.com/">Basscss <i class="fa fa-external-link fs-08" aria-hidden="true"></i>
                             </a></li>
                     </ul>
+                    <aside class="notes">
+                        Don't write framework yourself<br>
+                        Framework - different naming convention<br>
+                        Framework - good documentation<br>
+                    </aside>
                 </section>
                 <section>
                     <section>
@@ -235,6 +396,19 @@
                             <li class="pb2 fragment">Cache-friendly</li>
                             <li class="pb2 fragment">Faster websites</li>
                         </ul>
+                        <aside class="notes">
+                            No need to remove unused CSS classes<br>
+                            No worries about cascading part<br>
+                            No need to overwrite 5 classes rule of a framework<br>
+                            Easy to add ltr support or a theme<br>
+                            Names are abbreviations<br>
+                            No need to open CSS and think: new rule or update?<br>
+                            Don't want to write the same classes? Create component<br>
+                            Setup framework once at the beginning (headings, margings,etc) and reuse them<br>
+                            No design decisions distractions during the coding<br>
+                            If changing classes in HTML, no problem invalidating cache<br>
+                            Less CSS files to download (no duplicated rules), smaller CSS files<br>
+                        </aside>
                     </section>
                     <section>
                         <h2>The bad parts</h2>
@@ -277,6 +451,9 @@
     display: none;
 }
                         </code></pre>
+                        <aside class="notes">
+                            Lot or duplicated rules and nothing to do about it<br>
+                        </aside>
                     </section>
                     <section>
                         <pre><code class="html" data-trim>
@@ -287,6 +464,10 @@
 <span class="dn ...">...</span>
 <article class="dn ...">...</article>
                         </code></pre>
+                        <aside class="notes">
+                            Lot of duplicated classes<br>
+                            Create components<br>
+                        </aside>
                     </section>
                     <section>
                         <h3>The bad parts</h3>
@@ -297,6 +478,15 @@
                             <li class="pb3">Updating existing components can be a pain</li>
                             <li>Won't work with non-functional frameworks</li>
                         </ul>
+                        <aside class="notes">
+                            Changing font of multiple elements is hard<br>
+                            In CSS you just find and replace<br>
+                            In in functional CSS - need to change all components<br>
+                            Won't work with Bootstrap<br>
+                            Bootstrap relies on cascading, functional CSS doesn't<br>
+                            Bootstrap rules have higher specificity<br>
+                            You can use !important<br>
+                        </aside>
                     </section>
                 </section>
                 <section>
@@ -311,6 +501,9 @@
     padding-top: 153px;
 }
                         </code></pre>
+                        <aside class="notes">
+                            Non-reusable elements<br>
+                        </aside>
                     </section>
                     <section>
                         <h3>It's ok to write CSS</h3>
@@ -329,11 +522,19 @@
     *top: 50px;
 }
                         </code></pre>
+                        <aside class="notes">
+                            Not a religion, it's a tool<br>
+                            Create rules for generic elements if needed<br>
+                            Better idea is to extract what can change<br>
+                        </aside>
                     </section>
                 </section>
                 <section>
                     <section>
-                        <h2>Functional CSS won't solve all CSS problems</h2>
+                        <h2>Functional CSS is not a silver bullet</h2>
+                        <aside class="notes">
+                            No silver bullets in CSS<br>
+                        </aside>
                     </section>
                     <section>
                         <h2>CSS bloat vs HTML bloat</h2>
@@ -355,6 +556,10 @@ sidebar {
                         <pre><code class="html" data-trim>
 <div class="float-left margin-right-1 width-25">...</div>
                         </code></pre>
+                        <aside class="notes">
+                            Your data has to live somewhere<br>
+                            No correct answer<br>
+                        </aside>
                     </section>
                 </section>
                 <section>
