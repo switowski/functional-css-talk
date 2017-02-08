@@ -5,6 +5,8 @@
 :root {
   --md-green: #8bc34a;
   --md-red: #f44336;
+  --md-orange: #ff9800;
+  --md-deep-orange: #ff5722;
 }
 
 /* Enable Font-Awesome for icons */
@@ -19,6 +21,14 @@
 
 .reveal .green {
   color: var(--md-green);
+}
+
+.reveal .orange {
+  color: var(--md-orange);
+}
+
+.reveal .deep-orange {
+  color: var(--md-deep-orange);
 }
 
 /* By default, disable bullets in the lists*/

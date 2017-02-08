@@ -14,12 +14,6 @@ What's the general flow of the talk?
 First, I will say why writing CSS is hard, then I will describe how functional CSS works and then list the good parts and bad parts of functional CSS.
 
 
-Different title options:
-========================
-Writing maintainable CSS with Functional CSS.
-Maintainable CSS with visual regression testing and functional CSS.
-
-
 Presentation:
 * There is no one, ultimate and correct way to write CSS. Sooner or later, CSS will make you miserable and will become hard to maintain (so exactly like with JavaScript, except that for JS it happens way faster).
 * What's the problem with CSS?:
