@@ -35,7 +35,7 @@
                 <section>
                     <h1>Maintainable CSS</h1>
                     <br>
-                    <h2>with <span class="orange">visual regression testing</span><br>
+                    <h2 class="lh-150">with <span class="orange">visual regression testing</span><br>
                         and <span class="deep-orange">functional CSS</span></h2>
                     <br>
                     <br>
@@ -46,28 +46,72 @@
                 </aside>
                 </section>
                 <section>
-                    <h2>Problems of CSS</h2>
-                    <br>
-                    <br>
-                    <ul class="f2">
-                        <li class="pb2 tc fragment">
-                            <span class="red b">Cascading</span> <span class="green">Style Sheets</span>
-                        </li>
-                        <li class="pb2 tc fragment">Hard to maintain<br>(wrestling specificity with IDs and !important)</li>
-                        <li class="tc fragment">Unused and duplicated code</li>
-                    </ul>
-                <aside class="notes">
-                    Cascading is nice<br>
-                    Cascading will get in your way<br>
-                    Modify one element and break 5 pages<br>
-                    Specificity gets in your way (especially frameworks)<br>
-                    Big files = faster duplicated code appears<br>
-                    Duplication - .menu and .navigation example<br>
-                    Duplication - using classes and tags for styling<br>
-                    No code review for CSS, rely on automatic tools<br>
-                    Unused - menu removed but it was chained with other selectors (fighting specificity of framework)<br>
-                    It's fine to leave CSS, no one will notice<br>
-                </aside>
+                    <section>
+                        <h2>Problems of CSS</h2>
+                        <br>
+                        <br>
+                        <ul class="f2">
+                            <li class="pb2 tc fragment">
+                                <span class="red b">Cascading</span> <span class="green">Style Sheets</span>
+                            </li>
+                            <li class="pb2 tc fragment">Hard to maintain<br>(fighting specificity with <span class="red">IDs</span> and <span class="red">!important</span>)</li>
+                            <li class="tc fragment">Duplicated and unused code</li>
+                        </ul>
+                    <aside class="notes">
+                        Cascading is nice<br>
+                        Cascading will get in your way<br>
+                        Modify one element and break 5 pages<br>
+                        Specificity gets in your way (especially frameworks)<br>
+                        Big files = faster duplicated code appears<br>
+                    </aside>
+                    </section>
+                    <section>
+                        <h2>Duplicated CSS</h2>
+                        <br>
+                        <br>
+                        <pre><code class="html" data-trim>
+<div class="menu">...</div>
+...
+<div class="navigation">...</div>
+                        </code></pre>
+                        <br>
+                        <pre><code class="css" data-trim data-noescape>
+.header2 {
+    font-size: 24px;
+}
+
+...
+
+h2 {
+    font-size: 24px;
+}
+                        </code></pre>
+                    <aside class="notes">
+                        Duplication - .menu and .navigation example<br>
+                        Duplication - using classes and tags for styling<br>
+                        No code review for CSS, rely on automatic tools<br>
+                    </aside>
+                    </section>
+                    <section>
+                        <h2>Unused CSS</h2>
+                        <br>
+                        <br>
+                        <pre><code class="css" data-trim data-noescape>
+.menu {
+    font-size: 2em;
+}
+
+...
+
+.menu + ul li.active {
+    font-size: 3em;
+}
+                        </code></pre>
+                    <aside class="notes">
+                        Unused - menu removed but it was chained with other selectors (fighting specificity of framework)<br>
+                        It's fine to leave CSS, no one will notice<br>
+                    </aside>
+                    </section>
                 </section>
                 <section>
                     <h3>CSS is hard to refactor</h3>
@@ -89,7 +133,20 @@
                         <aside class="notes">
                             Tests help refactoring<br>
                             You test website manually<br>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>Find 5 differences...<h2>
+                        <img src="./img/5-differences.jpg" alt="Find 5 differences game">
+                        <aside class="notes">
                             Game - find 5 differences<br>
+                            Let's write tests that will do the same thing automatically<br>
+                        </aside>
+                    </section>
+                    <section>
+                        <h2>...100 times<h2>
+                        <img class="png" src="./img/5-differences-multiple.png" alt="Find 5 differences game">
+                        <aside class="notes">
                             Let's write tests that will do the same thing automatically<br>
                         </aside>
                     </section>
@@ -108,8 +165,10 @@
                         </h3>
                         <img src="./img/phantom-css.png">
                         <aside class="notes">
-                            Works locally<br>
-                            Requires writing steps for taking screenshots<br>
+                            Install locally<br>
+                            Define the steps<br>
+                            Take baseline screenshot<br>
+                            Compare and replace or fix your CSS<br>
                         </aside>
                     </section>
                     <section>
@@ -269,7 +328,7 @@
                         <br>
                         <pre class="fragment"><code class="html" data-trim>
 <article class="br2 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw5 center">
-  <img src="http://example.com" class="db w-100 br2 br--top">
+  <img src="http://placekitten.com/g/600/300" class="db w-100 br2 br--top">
   <div class="pa2 ph3-ns pb3-ns">
     <div class="dt w-100 mt1">
       <div class="dtc">

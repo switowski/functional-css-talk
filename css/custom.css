@@ -15,6 +15,7 @@
   font-style: normal;
 }
 
+/* Colors options */
 .reveal .red {
   color: var(--md-red);
 }
@@ -42,6 +43,11 @@
   margin: 0 0 0 1em;
 }
 
+/* Clean some borders and background for PNG images */
+.reveal .png {
+  border: none;
+  background: none;
+}
 /* Some functional classes */
 .reveal .b { font-weight:bold; }
 .reveal .tc { text-align: center; }
@@ -58,3 +64,4 @@
 .reveal .pb2 { padding-bottom: 15px; }
 .reveal .pb3 { padding-bottom: 20px; }
 .reveal .pb4 { padding-bottom: 25px; }
+.reveal .lh-150 { line-height: 150%; }
