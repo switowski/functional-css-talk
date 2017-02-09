@@ -98,13 +98,13 @@ h2 {
                         <br>
                         <pre><code class="css" data-trim data-noescape>
 .menu {
-    font-size: 2em;
+    font-size: 16px;
 }
 
 ...
 
-.menu + ul li.active {
-    font-size: 3em;
+.menu ul li.active {
+    font-size: 2em;
 }
                         </code></pre>
                     <aside class="notes">
@@ -151,11 +151,14 @@ h2 {
                         </aside>
                     </section>
                     <section>
-                        <h2>Visual regression tests</h2>
+                        <h2>Visual regression test</h2>
                         <br>
                         <img class='fragment' src="./img/visual-regression.png">
                         <aside class="notes">
-                            How they work<br>
+                            Takes a screenshot<br>
+                            You make a modification, run test and make another screenshot<br>
+                            Compare pixel by pixel<br>
+                            Show diff<br>
                         </aside>
                     </section>
                     <section>
@@ -179,7 +182,7 @@ h2 {
                         <img src="./img/spectre.png">
                         <aside class="notes">
                             Writing many tests is annoying<br>
-                            Spectre gives web interface and integrates with cucumber and rake<br>
+                            Spectre gives web interface and integrates with cucumber<br>
                         </aside>
                     </section>
                     <section>
@@ -458,7 +461,7 @@ h2 {
                             No need to remove unused CSS classes<br>
                             No worries about cascading part<br>
                             No need to overwrite 5 classes rule of a framework<br>
-                            Easy to add ltr support or a theme<br>
+                            Easy to add RTL support or a theme<br>
                             Names are abbreviations<br>
                             No need to open CSS and think: new rule or update?<br>
                             Don't want to write the same classes? Create component<br>
