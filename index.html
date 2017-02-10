@@ -42,7 +42,10 @@
                     <br>
                     <p>Sebastian Witowski</p>
                 <aside class="notes">
+                    Visual regression testing will help you modify your CSS with confidence<br>
+                    Functional CSS has some benefits over the standard way of writing the CSS<br>
                     No ultimate way to write CSS<br>
+                    Sooner or later, your CSS will probably become hard to maintain.<br>
                 </aside>
                 </section>
                 <section>
@@ -54,15 +57,19 @@
                             <li class="pb2 tc fragment">
                                 <span class="red b">Cascading</span> <span class="green">Style Sheets</span>
                             </li>
-                            <li class="pb2 tc fragment">Hard to maintain<br>(fighting specificity with <span class="red">IDs</span> and <span class="red">!important</span>)</li>
+                            <li class="pb2 tc fragment">Hard to maintain large files<br>(fighting specificity with <span class="red">IDs</span> and <span class="red">!important</span>)</li>
                             <li class="tc fragment">Duplicated and unused code</li>
                         </ul>
                     <aside class="notes">
-                        Cascading is nice<br>
-                        Cascading will get in your way<br>
-                        Modify one element and break 5 pages<br>
+                        Nice idea that some elements inherit styles from other elements<br>
+                        Once your code grows bigger it will get in your way<br>
+                        You modify one element and break 5 pages<br>
+                        Once CSS files starts growing, it gets harder to maintain<br>
                         Specificity gets in your way (especially frameworks)<br>
+                        Your CSS rules gets more and more complicated<br>
+                        Your rules gets more complicated<br>
                         Big files = faster duplicated code appears<br>
+                        <br>
                     </aside>
                     </section>
                     <section>
@@ -87,9 +94,12 @@ h2 {
 }
                         </code></pre>
                     <aside class="notes">
-                        Duplication - .menu and .navigation example<br>
-                        Duplication - using classes and tags for styling<br>
+                        More than one person on a project <br>
+                        .menu and .navigation looks similar but have different layout of elements inside, so both have to stay<br>
+                        Or one developer is styling classes and the other is styling elements<br>
+                        No easy way to see the duplicated rules<br>
                         No code review for CSS, rely on automatic tools<br>
+                        <br>
                     </aside>
                     </section>
                     <section>
@@ -103,13 +113,18 @@ h2 {
 
 ...
 
+# Chained selectors and cascading
 .menu ul li.active {
-    font-size: 2em;
+    font-size: 2em; #Cascading in your face
 }
                         </code></pre>
                     <aside class="notes">
-                        Unused - menu removed but it was chained with other selectors (fighting specificity of framework)<br>
-                        It's fine to leave CSS, no one will notice<br>
+                        CSS rules get complicated<br>
+                        They depend on each other because the selectors are chained or because of cascading<br>
+                        When you try to remove something, something else will break<br>
+                        You remove menu class and rules don't apply anymore<br>
+                        Most developers will leave the CSS there<br>
+                        Nothing bad will happen if you leave the old CSS, so you can move on<br>
                     </aside>
                     </section>
                 </section>
@@ -118,9 +133,11 @@ h2 {
                     <br>
                     <img src="./img/refactoring-css.gif" alt="Refactoring CSS doesn't always work well">
                 <aside class="notes">
-                    Refactoring legacy Python project is easy, you have tests<br>
-                    Refactoring CSS means rewriting<br>
-                    No manager will let you do this (unless redesigning the website)<br>
+                    Not like with programming languages, where you can refactor at any time<br>
+                    Refactoring legacy Java project is easy, you have tests<br>
+                    For a huge legacy CSS, the best thing you can do is to rewrite it<br>
+                    There is no way to refactor this efficiently, especially if it's just a bunch of spaghetti rules without any general conception in mind<br>
+                    And rewriting CSS from scratch is not something that any manager will let you do (unless redesigning the website)<br>
                 </aside>
                 </section>
                 <section>
@@ -131,23 +148,30 @@ h2 {
                         <h2>We can write tests for CSS<h2>
                         <img class="fragment" src="./img/css-tests.jpg" alt="Tests for CSS?">
                         <aside class="notes">
-                            Tests help refactoring<br>
-                            You test website manually<br>
+                            The first idea would be to find a way to write tests for CSS<br>
+                            Since tests for programming languages will greatly help you refactoring it, same should work for CSS<br>
+                            I don't mean tests that check if a given element has a class or a specific rule<br>
+                            No, I mean actually testing how the website looks<br>
+                            You modify CSS, open the browser, log in, click some buttons, resize for mobile and tablet<br>
+                            <br>
                         </aside>
                     </section>
                     <section>
                         <h2>Find 5 differences...<h2>
                         <img src="./img/5-differences.jpg" alt="Find 5 differences game">
                         <aside class="notes">
-                            Game - find 5 differences<br>
-                            Let's write tests that will do the same thing automatically<br>
+                            It's like playing this game when you have 2 pictures that look almost the same and your task is to find 5 differences<br>
+                            <br>
                         </aside>
                     </section>
                     <section>
                         <h2>...100 times<h2>
                         <img class="png" src="./img/5-differences-multiple.png" alt="Find 5 differences game">
                         <aside class="notes">
-                            Let's write tests that will do the same thing automatically<br>
+                            Except that you would be playing the same game over and over again with different kinds of changes<br>
+                            Tedious and boring, if you have more than few pages you will miss some bugs only to find them later with no idea which change broke them<br>
+                            Since human are not really good at this game, let's have machines play it<br>
+                            That's where the visual regression testing comes in<br>
                         </aside>
                     </section>
                     <section>
@@ -168,6 +192,7 @@ h2 {
                         </h3>
                         <img src="./img/phantom-css.png">
                         <aside class="notes">
+                            There are many tools for visual regression tests, starting from the most well known - PhantomCSS<br>
                             Install locally<br>
                             Define the steps<br>
                             Take baseline screenshot<br>
@@ -181,8 +206,11 @@ h2 {
                         </h3>
                         <img src="./img/spectre.png">
                         <aside class="notes">
-                            Writing many tests is annoying<br>
-                            Spectre gives web interface and integrates with cucumber<br>
+                            Writing tests only for the visual regressions can be annoying<br>
+                            You already have to write unit, functional, integration, acceptance and god only know what kind of tests<br>
+                            For some programming languages you can find tools that will allow you to integrate visual regression testing with you existing functional tests<br>
+                            You are using the cucumber testing framework, there is specter<br>
+                            It will give you a nice web interface and you can send the screenshots directly from the cucumber functional tests<br>
                         </aside>
                     </section>
                     <section>
@@ -192,9 +220,11 @@ h2 {
                         </h3>
                         <img src="./img/percy.png">
                         <aside class="notes">
-                            Integration with CI tools (Travis, Jenkins)<br>
-                            Support Python, Ruby, RoR, Ember and static websites.<br>
+                            But what is a real kicker for me is a way to add visual regression testing as a part of your continuous integration cycle and that's possible with percy.io<br>
+                            You can easily integrate percy.io with Travis, Jenkins or other popular CI tools<br>
+                            It supports Python, Ruby, and Ruby on Rails, Ember and static websites
                             Features like freezing animations<br>
+                            I have tried them before and there were some annoying bugs that they seems to fix recently, so I hope it's quite usable right now<br>
                         </aside>
                     </section>
                     <section>
@@ -209,6 +239,9 @@ h2 {
                                 <a href="https://github.com/bslatkin/dpxdt">dpxdt (for Python) <i class="fa fa-external-link fs-08" aria-hidden="true"></i></a>
                             </li>
                         </ul>
+                        <aside class="notes">
+                            I'm also listing two other tools for visual regression testing in Python if you want to take a look<br>
+                        </aside>
                     </section>
                 </section>
                 <section>
@@ -216,12 +249,14 @@ h2 {
                     <br>
                     <br>
                     <ul class='tc f2'>
-                        <li class="pb2">Dynamic content</li>
-                        <li>Sharing tests with your team</li>
+                        <li class="pb2"><span class="red b">Dynamic content</span><br>(changing number or random blog post)<br><br></li>
+                        <li><span class="red b">Sharing tests with your team</span><br>(different OS, different graphic card, different configuration)</li>
                     </ul>
                     <aside class="notes">
-                        You have to keep them up to date like normal tests<br>
-                        You have a number or random content? Fail<br>
+                        Visual regressions testing sounds great but there are problems with it<br>
+                        On top of the normal issues with tests which is that you have to update them over and over again, visual regressions have some other culprits<br>
+                        If you have a random element on you website a number or random blog post?<br>
+                        Well, then probably your tests will fail each time that number or that blog post changes<br>
                         You can select what to compare<br>
                         If not a part of CI, you have to share screenshots with team<br>
                         Different OS and graphic card? Fail<br>
