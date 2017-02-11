@@ -94,7 +94,7 @@ h2 {
 }
                         </code></pre>
                     <aside class="notes">
-                        More than one person on a project <br>
+                        More than one person on CSS in a project <br>
                         .menu and .navigation looks similar but have different layout of elements inside, so both have to stay<br>
                         Or one developer is styling classes and the other is styling elements<br>
                         No easy way to see the duplicated rules<br>
@@ -115,16 +115,15 @@ h2 {
 
 # Chained selectors and cascading
 .menu ul li.active {
-    font-size: 2em; #Cascading in your face
+    font-size: 2em;
 }
                         </code></pre>
                     <aside class="notes">
                         CSS rules get complicated<br>
                         They depend on each other because the selectors are chained or because of cascading<br>
-                        When you try to remove something, something else will break<br>
-                        You remove menu class and rules don't apply anymore<br>
+                        When you try to remove unused rules, something else will break<br>
                         Most developers will leave the CSS there<br>
-                        Nothing bad will happen if you leave the old CSS, so you can move on<br>
+                        Nothing bad will happen if you leave the old CSS, and you can always overwrite them with new rules<br>
                     </aside>
                     </section>
                 </section>
@@ -196,7 +195,7 @@ h2 {
                             Install locally<br>
                             Define the steps<br>
                             Take baseline screenshot<br>
-                            Compare and replace or fix your CSS<br>
+                            Compare and replace the baseline image or fix your CSS<br>
                         </aside>
                     </section>
                     <section>
@@ -222,7 +221,7 @@ h2 {
                         <aside class="notes">
                             But what is a real kicker for me is a way to add visual regression testing as a part of your continuous integration cycle and that's possible with percy.io<br>
                             You can easily integrate percy.io with Travis, Jenkins or other popular CI tools<br>
-                            It supports Python, Ruby, and Ruby on Rails, Ember and static websites
+                            It supports Python, Ruby, and Ruby on Rails, Ember and static websites<br>
                             Features like freezing animations<br>
                             I have tried them before and there were some annoying bugs that they seems to fix recently, so I hope it's quite usable right now<br>
                         </aside>
@@ -254,11 +253,11 @@ h2 {
                     </ul>
                     <aside class="notes">
                         Visual regressions testing sounds great but there are problems with it<br>
-                        On top of the normal issues with tests which is that you have to update them over and over again, visual regressions have some other culprits<br>
-                        If you have a random element on you website a number or random blog post?<br>
-                        Well, then probably your tests will fail each time that number or that blog post changes<br>
-                        You can select what to compare<br>
-                        If not a part of CI, you have to share screenshots with team<br>
+                        On top of the normal issues with tests (update over and over again), they have some other culprits<br>
+                        Increasing number of documents in the database or random blog post?<br>
+                        Your tests will fail each time that number or that blog post changes<br>
+                        You can select what to compare or what to ignore<br>
+                        For tools like PhantomCSS, if not a part of CI, you have to share screenshots with your team<br>
                         Different OS and graphic card? Fail<br>
                         Different configuration (Chromium instead of Chrome)? Fail<br>
                         CI solves those issues<br>
@@ -276,7 +275,9 @@ h2 {
                             <li class="pb2 b">SMACSS</li>
                         </ul>
                         <aside class="notes">
-                            Many methodologies<br>
+                            We have discussed how we can protect ourselves a bit, when modifying the CSS.<br>
+                            How can we actually write the CSS, so that it's easier to maintain  in the future?<br>
+                            Bunch of methodologies were introduced to help you with that.<br>
                         </aside>
                     </section>
                     <section>
@@ -299,8 +300,9 @@ h2 {
 }
                         </code></pre>
                         <aside class="notes">
-                            Separate .button/.modal from .alert/.warning <br>
-                            Bootstrap does that and it works well<br>
+                            You should create separate classes for the structure that will define how the button or a modal looks like and separate classes for the skin of those elements<br>
+                            Like an alert button will have a red color and info button will have blue color<br>
+                            If you use frameworks like Bootstrap, you should be familiar with this pattern as this is exactly what Bootstrap is doing<br>
                         </aside>
                     </section>
                     <section>
@@ -321,8 +323,8 @@ h2 {
 }
                         </code></pre>
                         <aside class="notes">
-                            Element should look the same no matter where it is<br>
-                            Avoid styling tags, style classes<br>
+                            Second rule - separate content from container - means that an element should look the same, no matter where it's located in the website<br>
+                            Don't style tags, style classes<br>
                         </aside>
                     </section>
                     <section>
@@ -331,9 +333,9 @@ h2 {
                         <img src="./img/bem.jpg">
                         <aside class="notes">
                             Think of HTML and CSS in 3 categories: block, element, modifier<br>
-                            Menu block<br>
-                            Menu item - elements<br>
-                            Active item - modifier<br>
+                            Any independent element of your website is a block, like the menu block<br>
+                            All the pieces of code that live inside that block and don't make much sense outside of it are Elements, for example menu elements that live inside the menu block<br>
+                            Apply some modifications to the block or the element (active menu item), you use the modifier<br>
                             Greatly improves encapsulation and reusability<br>
                         </aside>
                     </section>
@@ -349,14 +351,17 @@ h2 {
                         </ul>
                         <aside class="notes">
                             More fine-grained categorization of elements<br>
+                            Encourages you to split the CSS classes into 5 different categories<br>
+                            Although I have no experience using this one, so I can't say how it works in practice<br>
                         </aside>
                     </section>
                 </section>
                 <section>
                     <h2>Functional CSS</h2>
                     <aside class="notes">
-                        People come up with methodologies - so we have a problem with CSS<br>
-                        Recent idea to writing CSS<br>
+                        All those methodologies are nice and definitely help you with writing CSS<br>
+                        But the fact that people keep coming up with methodologies to write CSS and those methodologies get popular means, that we obviously have a problem with CSS.<br>
+                        Yet another idea how to approach the CSS writing - a functional CSS<br>
                         Functional programming trendy - why not functional CSS?<br>
                     </aside>
                 </section>
@@ -381,8 +386,10 @@ h2 {
 </article>
                         </code></pre>
                         <aside class="notes">
+                            So how does a functional CSS works?<br>
                             Standard media object<br>
-                            Lot of HTML code if using functional framework<br>
+                            This is the HTML code for that element, if we would use one of the existing frameworks for functional CSS<br>
+                            Let's see the CSS that we use<br>
                         </aside>
                     </section>
                     <section>
@@ -420,10 +427,11 @@ h2 {
   .w-25-l { width: 25%; } }
                         </code></pre>
                         <aside class="notes">
-                            Even more CSS code<br>
-                            Didn't write a single CSS line myself<br>
+                            Wow, that's even more code<br>
+                            Do you know how many lines of CSS did I have to write when creating this box with image and text?<br>
+                            All of that CSS comes from a framework (I don't have to use an existing framework)<br>
                             One rule per CSS class (with small exceptions)<br>
-                            I don't write CSS anymore<br>
+                            once I have all the rules in place, I don't have to write CSS anymore for styling any elements on the page.<br>
                         </aside>
                     </section>
                     <section>
@@ -437,9 +445,8 @@ h2 {
 <p class="f5">...</p>
                         </code></pre>
                         <aside class="notes">
-                            Change 1 class to change the font size<br>
-                            No need to open the CSS file<br>
-                            No risk that we break some other elements<br>
+                            If we decide that we want to increase the font size of the text, we just modify one class in the HTML snippet and we are done<br>
+                            No more going though the CSS and figuring out what rules you can change and how to make this happen without breaking something else<br>
                         </aside>
                     </section>
                 </section>
@@ -454,12 +461,12 @@ h2 {
                         <li class="fragment">Transparent (rem vs em)</li>
                     </ul>
                     <aside class="notes">
-                        Pure - class for background color sets the background color only<br>
-                        Pure - in standard CSS one class changes 10 properties and 5 in children due to cascading<br>
-                        Composable - small, reusable blocks<br>
-                        Immutable - property once declared, won't change (no specificity fight)<br>
-                        Transparent - you know what a class does, no matter where on page<br>
-                        <br>
+                        Pure - you can be sure that a class that is supposed to set the background color just sets a background color<br>
+                        Compare it with the standard CSS, where each class will change 10 properties and 5 more changes will be inherited from the parent<br>
+                        Composable - just like in a functional programming, you are building your element from small, reusable blocks<br>
+                        Immutable - you are 100% sure that once you declare a property, nothing will overwrite it (no specificity fight)<br>
+                        Transparent - you know exactly what will happen if you apply a given class<br>
+                        No matter where you put a given element on a page, if you add class with 1 rem font size, it will have this exact font size<br>
                     </aside>
                 </section>
                 <section>
