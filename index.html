@@ -122,6 +122,7 @@ h2 {
                         CSS rules get complicated<br>
                         They depend on each other because the selectors are chained or because of cascading<br>
                         When you try to remove unused rules, something else will break<br>
+                        You try to remove the font-size for menu, but this will affect the other rule<br>
                         Most developers will leave the CSS there<br>
                         Nothing bad will happen if you leave the old CSS, and you can always overwrite them with new rules<br>
                     </aside>
@@ -148,7 +149,7 @@ h2 {
                         <img class="fragment" src="./img/css-tests.jpg" alt="Tests for CSS?">
                         <aside class="notes">
                             The first idea would be to find a way to write tests for CSS<br>
-                            Since tests for programming languages will greatly help you refactoring it, same should work for CSS<br>
+                            Since tests for programming languages will help you when you modify the code, same should work for CSS<br>
                             I don't mean tests that check if a given element has a class or a specific rule<br>
                             No, I mean actually testing how the website looks<br>
                             You modify CSS, open the browser, log in, click some buttons, resize for mobile and tablet<br>
@@ -180,8 +181,7 @@ h2 {
                         <aside class="notes">
                             Takes a screenshot<br>
                             You make a modification, run test and make another screenshot<br>
-                            Compare pixel by pixel<br>
-                            Show diff<br>
+                            Then it compares those 2 screenshots, pixel by pixel and if something is different, the test is failing, usually presenting you with a diff between these two images<br>
                         </aside>
                     </section>
                     <section>
@@ -193,8 +193,9 @@ h2 {
                         <aside class="notes">
                             There are many tools for visual regression tests, starting from the most well known - PhantomCSS<br>
                             Install locally<br>
-                            Define the steps<br>
+                            Write some tests where you basically define the setup part, like log in, take screenshot<br>
                             Take baseline screenshot<br>
+                            If there are some changes between the two screenshots, you will get a failing test<br>
                             Compare and replace the baseline image or fix your CSS<br>
                         </aside>
                     </section>
@@ -257,11 +258,10 @@ h2 {
                         Increasing number of documents in the database or random blog post?<br>
                         Your tests will fail each time that number or that blog post changes<br>
                         You can select what to compare or what to ignore<br>
-                        For tools like PhantomCSS, if not a part of CI, you have to share screenshots with your team<br>
+                        For tools like PhantomCSS, where you don't actually include them as a part of some CI tests suite but you run it on your local machine - if you share the screenshots with your team,...<br>
                         Different OS and graphic card? Fail<br>
                         Different configuration (Chromium instead of Chrome)? Fail<br>
                         CI solves those issues<br>
-                        That's how we protect ourselves<br>
                     </aside>
                 </section>
                 <section>
@@ -275,7 +275,7 @@ h2 {
                             <li class="pb2 b">SMACSS</li>
                         </ul>
                         <aside class="notes">
-                            We have discussed how we can protect ourselves a bit, when modifying the CSS.<br>
+                            That's how we can protect ourselves a bit, when modifying the CSS.<br>
                             How can we actually write the CSS, so that it's easier to maintain  in the future?<br>
                             Bunch of methodologies were introduced to help you with that.<br>
                         </aside>
@@ -336,6 +336,7 @@ h2 {
                             Any independent element of your website is a block, like the menu block<br>
                             All the pieces of code that live inside that block and don't make much sense outside of it are Elements, for example menu elements that live inside the menu block<br>
                             Apply some modifications to the block or the element (active menu item), you use the modifier<br>
+                            Very simple, but after using it for a while, I can say that it's super efficient<br>
                             Greatly improves encapsulation and reusability<br>
                         </aside>
                     </section>
@@ -431,7 +432,7 @@ h2 {
                             Do you know how many lines of CSS did I have to write when creating this box with image and text?<br>
                             All of that CSS comes from a framework (I don't have to use an existing framework)<br>
                             One rule per CSS class (with small exceptions)<br>
-                            once I have all the rules in place, I don't have to write CSS anymore for styling any elements on the page.<br>
+                            Once I have all the rules in place, I don't have to write CSS anymore for styling any elements on the page.<br>
                         </aside>
                     </section>
                     <section>
@@ -481,8 +482,9 @@ h2 {
                     </ul>
                     <aside class="notes">
                         Don't write framework yourself<br>
-                        Framework - different naming convention<br>
-                        Framework - good documentation<br>
+                        Two main, existing frameworks:  Tachyons and Basscss, are pretty great<br>
+                        They differ slightly in the way they name classes but both are nice and have a very good documentation<br>
+                        Documentation is very important when using a functional CSS (otherwise you will start duplicating CSS)<br>
                     </aside>
                 </section>
                 <section>
@@ -500,17 +502,18 @@ h2 {
                             <li class="pb2 fragment">Faster websites</li>
                         </ul>
                         <aside class="notes">
-                            No need to remove unused CSS classes<br>
-                            No worries about cascading part<br>
-                            No need to overwrite 5 classes rule of a framework<br>
-                            Easy to add RTL support or a theme<br>
-                            Names are abbreviations<br>
-                            No need to open CSS and think: new rule or update?<br>
-                            Don't want to write the same classes? Create component<br>
-                            Setup framework once at the beginning (headings, margings,etc) and reuse them<br>
-                            No design decisions distractions during the coding<br>
-                            If changing classes in HTML, no problem invalidating cache<br>
-                            Less CSS files to download (no duplicated rules), smaller CSS files<br>
+                            You can modify styles for HTML elements without the fear that you will break something (image that no longer needs to float to the right example)<br>
+                            If you remove a class or a CSS rule, you need to check other places if everything still works fine (cascading, so there can be consequences that you won't easily see), so developers will leave the old CSS code<br>
+                            You no longer have to fight with the specificity when you add a new rule just because Bootstrap had to chain 5 classes together to make something work<br>
+                            All classes have the same specificity level (which is just one class)  - it will make modifications way easier. Adding RTL support is easy (or different theme colors)<br>
+                            Good luck writing a template for Bootstrap<br>
+                            Once you learn the most common class names, you will be actually coding way faster (div with small margin on top and black background example)<br>
+                            If you have to write the same set of classes over and over again, you will quickly get bored and you will probably create an HTML component (and that's good, it makes your code DRY)<br>
+                            Before you start working on a project, you go through the clean framework and adjust all settings according to the design vision (different heading sizes according to some typeset tools, make the different margin sizes consistent)<br>
+                            Then, you will start coding and you no longer will have to think how many pixels you need for margins<br>
+                            You are no longer distracted with the small design decisions when coding.<br>
+                            When you change the styling by changing the CSS classes in the HTML, you won't have problems with invalidation the cache<br>
+                            You might actually find out that after switching to functional CSS, you not only have less CSS files to download, but the overall size of your website went down, since you no longer duplicate the CSS rules<br>
                         </aside>
                     </section>
                     <section>
@@ -520,6 +523,9 @@ h2 {
                         <ul class="tc f2">
                             <li>"It's just replacing duplicated CSS rules with duplicated CSS classes!"</li>
                         </ul>
+                        <aside class="notes">
+                            The main argument against the functional CSS is that you are replacing duplicated CSS rules with duplicated CSS classes<br>
+                        </aside>
                     </section>
                     <section>
                         <pre style="height:600px"><code class="css" style='min-height:100%;' data-trim data-noescape>
@@ -555,7 +561,7 @@ h2 {
 }
                         </code></pre>
                         <aside class="notes">
-                            Lot or duplicated rules and nothing to do about it<br>
+                            When you are writing CSS the standard way, you will have a lot of rules duplication and there is not much you can do about it.<br>
                         </aside>
                     </section>
                     <section>
@@ -568,8 +574,10 @@ h2 {
 <article class="dn ...">...</article>
                         </code></pre>
                         <aside class="notes">
-                            Lot of duplicated classes<br>
-                            Create components<br>
+                            When you switch to functional CSS, instead of duplicating the CSS rules, you will duplicate the CSS classes<br>
+                            So instead of having a messy CSS files, we now have a messy HTML files, right<br>
+                            You can and you should create HTML components for the parts of your website that are repeated often<br>
+                            Every framework provides you with some way to create components<br>
                         </aside>
                     </section>
                     <section>
@@ -582,10 +590,10 @@ h2 {
                             <li>Won't work with non-functional frameworks</li>
                         </ul>
                         <aside class="notes">
-                            Changing font of multiple elements is hard<br>
-                            In CSS you just find and replace<br>
-                            In in functional CSS - need to change all components<br>
-                            Won't work with Bootstrap<br>
+                            Imagine that your designer decides that we should change the font family of multiple elements and maybe add more margin to all buttons<br>
+                            With standard way of writing the CSS, if you separate the classes using some of the existing methodologies, you can just open the CSS files concerned with your changes and use find-replace to quickly apply your changes<br>
+                            With functional CSS, you will have to modify all the HTML components and replace the existing classes, which indeed can take more time<br>
+                            And probably the biggest problem for many developers is that it won't work with Bootstrap or other non-functional CSS that give you a lot of styling out of the box<br>
                             Bootstrap relies on cascading, functional CSS doesn't<br>
                             Bootstrap rules have higher specificity<br>
                             You can use !important<br>
@@ -605,7 +613,10 @@ h2 {
 }
                         </code></pre>
                         <aside class="notes">
-                            Non-reusable elements<br>
+                            So, does it mean that we no longer have to write CSS with functional CSS?<br>
+                            No, you will still write CSS for stuff that can't be reusable<br>
+                            <br>
+                            <br>
                         </aside>
                     </section>
                     <section>
@@ -626,9 +637,14 @@ h2 {
 }
                         </code></pre>
                         <aside class="notes">
-                            Not a religion, it's a tool<br>
-                            Create rules for generic elements if needed<br>
-                            Better idea is to extract what can change<br>
+                            And Functional CSS is not a religion, it's a tool<br>
+                            In my opinion, if you really want to have CSS classes with a set of rules instead of HTML components, nothing stops you<br>
+                            You can create a CSS for a generic element that you know it won't change often and you want to reuse in multiple places<br>
+                            For example, if you want a modal for your website, just create this modal class<br>
+                            Then if you need a bigger modal, just add 'width-50' class<br>
+                            If you put the CSS in a correct order and you don't increase the selectors specificity, you shouldn't get into many problems<br>
+                            To actually make it better, just add the styles that you know you won't need to overwrite and then add the remaining styles with functional classes<br>
+                            <br>
                         </aside>
                     </section>
                 </section>
@@ -636,7 +652,7 @@ h2 {
                     <section>
                         <h2>Functional CSS is not a silver bullet</h2>
                         <aside class="notes">
-                            No silver bullets in CSS<br>
+                            Functional CSS is not a silver bullet (there are no silver bullets in CSS, there are just less painful ways of doing stuff), but it might solve some of the problems that you have.<br>
                         </aside>
                     </section>
                     <section>
@@ -660,8 +676,8 @@ sidebar {
 <div class="float-left margin-right-1 width-25">...</div>
                         </code></pre>
                         <aside class="notes">
-                            Your data has to live somewhere<br>
-                            No correct answer<br>
+                            At the end when it comes to CSS it all boils down to the "CSS bloat vs HTML bloat" since you data has to live somewhere.<br>
+                            At some point you will have to make a choice between one of those two solutions and which one you prefer, it's up to you.
                         </aside>
                     </section>
                 </section>
